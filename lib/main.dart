@@ -1,126 +1,5 @@
 import 'package:flutter/material.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatefulWidget {
-//   @override
-//   _InputsState createState() => _InputsState();
-// }
-
-// class _InputsState extends State<MyApp> {
-//   late TextEditingController _controller;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _controller = TextEditingController();
-//   }
-
-//   @override
-//   void dispose() {
-//     _controller.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter App',
-//       home: Scaffold(
-//           appBar: AppBar(
-//             title: Text('SignUp'),
-//           ),
-//           body: Container(
-//             key: _doneKey,
-
-//           // margin: EdgeInsets.all(16),
-
-//             child: ListView(
-
-//             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-
-//             children: [
-//             Container(
-//               child: TextField(
-//                 // controller: _controller,
-//                 maxLines: 1,
-
-//                 decoration: InputDecoration(
-//                     border: UnderlineInputBorder(), labelText: 'Username'),
-//               ),
-//             ),
-//             TextField(
-//               // controller: _controller,
-//               maxLines: 1,
-//               obscureText: true,
-//               decoration: InputDecoration(
-//                   border: UnderlineInputBorder(), labelText: 'Password'),
-//             ),
-//             TextField(
-//               // controller: _controller,
-//               maxLines: 1,
-//               keyboardType: TextInputType.emailAddress,
-//               decoration: InputDecoration(
-//                   border: UnderlineInputBorder(), labelText: 'Email'),
-//             ),
-
-//             // dropdown list
-
-//             // Container(
-//             //   padding: const EdgeInsets.all(8),
-//             //   child: DropdownButton(
-//             //   value: dropdownValue,
-//             //   icon: const Icon(Icons.arrow_downward),
-//             //   iconSize: 16,
-//             //   elevation: 16,
-//             //   style: const TextStyle(color: Colors.deepPurple),
-//             //   underline: Container(
-//             //   height: 2,
-//             //   color: Colors.deepPurpleAccent,
-//             // ),
-//             //   onChanged: (String? newValue) {
-//             //   setState(() {
-//             //   dropdownValue = newValue!;
-//             //   });
-//             //   },
-//             //         items: <String>['Male', 'Female', 'Others', 'Free']
-//             //             .map<DropdownMenuItem<String>>((String value) {
-//             //           return DropdownMenuItem<String>(
-//             //             value: value,
-//             //             child: Text(value),
-//             //           );
-//             //         }).toList(),
-//             //       ),
-//             //     ),
-
-//             // button onSubmit
-//                 Container(
-//                   padding: const EdgeInsets.all(8),
-//                   child: ElevatedButton(
-//                     child: const Text('Submit'),
-//                     onPressed: () {
-//                       if (_doneKey.currentState!.validate()) {
-//                         ScaffoldMessenger.of(context).showSnackBar(
-//                           const SnackBar(
-//                             content: Text('Successfully Signed Up!'),
-//                           ),
-//                         );
-//                       }
-//                     },
-//                   ),
-//                 )
-
-//             ],
-
-//             )
-
-//           )),
-//     );
-//   }
-// }
-
 void main() {
   runApp(const MyApp());
 }
@@ -170,9 +49,9 @@ class _SignUpState extends State<SignUp> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-
                 Image(
-                  image: NetworkImage('https://media.istockphoto.com/photos/on-colourful-speech-bubbles-picture-id180819641?b=1&k=20&m=180819641&s=170667a&w=0&h=CX51cRVofQl95e_cu9Bfy5PLZQ1WdsqmJ-NCFzU96UI='),
+                  image: NetworkImage(
+                      'https://media.istockphoto.com/photos/on-colourful-speech-bubbles-picture-id180819641?b=1&k=20&m=180819641&s=170667a&w=0&h=CX51cRVofQl95e_cu9Bfy5PLZQ1WdsqmJ-NCFzU96UI='),
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -283,21 +162,18 @@ class _SignUpState extends State<SignUp> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: ElevatedButton(
-                    child: const Text('SignUp'),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Successfully Signed Up!'),
-                          ),
-                        );
-                      }
-                    },
-                  ),
+                      child: const Text('SignUp'),
+                      onPressed: _formKey.currentState?.validate() ?? false
+                          ? () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Successfully Signed Up!'),
+                                ),
+                              );
+                            }
+                          : null),
                 )
               ],
             )));
   }
 }
-
-
